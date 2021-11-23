@@ -1,14 +1,10 @@
 <script setup>
-const { login, hasToken, apiUrl, headers } = useGitHub()
+const login = () => githubLogin()
+const user = await useGithubUser()
+
 useMeta({
   title: 'Discuss with Atinux',
 })
-const user = useState('user', () => null)
-if (hasToken.value) {
-  user.value = await $fetch(apiUrl('/user'), {
-    headers: headers(),
-  })
-}
 </script>
 
 <template>

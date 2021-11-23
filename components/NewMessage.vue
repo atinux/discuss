@@ -1,17 +1,13 @@
 <script setup>
-const { apiUrl, headers } = useGitHub()
 const title = ref('')
 const sending = ref(false)
 const postIssue = async () => {
   if (sending.value || !title.value.trim()) return
   sending.value = true
   // Call GitHub
-  await $fetch(apiUrl('/repos/atinux/discuss/issues'), {
+  await githubFetch('/repos/atinux/discuss/issues', {
     method: 'POST',
-    headers: headers(),
-    body: {
-      title: title.value,
-    },
+    body: { title: title.value, },
   })
   sending.value = false
   title.value = ''
