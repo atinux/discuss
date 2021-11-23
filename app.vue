@@ -1,3 +1,9 @@
+<script setup>
+useMeta({
+  title: 'Discuss with Atinux',
+})
+</script>
+
 <template>
   <AppContainer>
     <h1 class="text-4xl flex items-center gap-2">
@@ -9,9 +15,3 @@
     </p>
   </AppContainer>
 </template>
-
-<script setup>
-useMeta({
-  title: 'Discuss with Atinux',
-})
-</script>
