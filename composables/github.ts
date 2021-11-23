@@ -28,8 +28,6 @@ export const githubLogin = () => {
 }
 
 export const githubLogout = async () => {
-  await $fetch('/api/github/logout')
   useGithubCookie().value = null
   if (process.client) { window.location.reload() }
 }
-

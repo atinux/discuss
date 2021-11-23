@@ -17,9 +17,8 @@ export default async (req, res) => {
   if (response.error) {
     return sendRedirect(res, '/')
   }
-  setCookie(res, 'gh_token', response.access_token, {
-    path: '/',
-    httpOnly: true,
-  })
+
+  setCookie(res, 'gh_token', response.access_token, { path: '/', })
+
   return sendRedirect(res, '/')
 }
