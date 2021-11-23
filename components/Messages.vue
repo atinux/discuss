@@ -1,14 +1,11 @@
 <script setup>
 import { UseTimeAgo } from '@vueuse/components'
-const { apiUrl, headers } = useGitHub()
 const { ISSUES_SSE_URL } = useRuntimeConfig()
 
-const { data: issues } = await useFetch(
-  apiUrl('/repos/atinux/discuss/issues'),
-  {
-    headers: headers(),
-    transform: issues => issues.filter(issue => issue.state === 'open'),
-  }
+const { data: issues } = await useAsyncData(
+  'issues',
+  () => githubFetch('/repos/atinux/discuss/issues'),
+  { transform: issues => issues.filter(issue => issue.state === 'open') }
 )
 
 onMounted(() => {

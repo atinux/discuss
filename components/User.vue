@@ -1,12 +1,6 @@
 <script setup>
-const { logout } = useGitHub()
-
-defineProps({
-  user: {
-    type: Object,
-    required: true
-  }
-})
+const logout = githubLogout
+const user = await useGithubUser()
 </script>
 
 <template>
