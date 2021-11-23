@@ -23,8 +23,9 @@ cp .env.example .env
 ### GitHub
 
 [Create a GitHub OAuth application](https://github.com/settings/applications/new) and make sure to set:
-  - Homepage URL: http://localhost:3000
-  - Authorization callback URL: http://localhost:3000/api/github/callback
+
+- Homepage URL: http://localhost:3000
+- Authorization callback URL: http://localhost:3000/api/github/callback
 
 Fill your `.env` with `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` variables .
 

@@ -9,6 +9,6 @@ export default defineNuxtConfig({
   buildModules: ['@unocss/nuxt'],
   unocss: {
     preflight: true,
-    icons: true
-  }
+    icons: true,
+  },
 })

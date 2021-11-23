@@ -3,13 +3,15 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
-    "start": "node .output/server/index.mjs"
+    "start": "node .output/server/index.mjs",
+    "lint": "prettier --write ."
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.0.11",
     "@unocss/nuxt": "^0.12.2",
     "@vueuse/components": "^7.0.1",
     "@vueuse/core": "^7.0.1",
-    "nuxt3": "latest"
+    "nuxt3": "latest",
+    "prettier": "^2.4.1"
   }
 }
