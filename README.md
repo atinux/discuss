@@ -30,18 +30,17 @@ Fill your `.env` with `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` variables .
 
 ### Pipedream
 
-Make sure to have an [account on Pipedream](https://pipedream.com).
+This add the live events when issues are created or updated.
 
-1. [Create a source](https://pipedream.com/sources/new)
-2. Select GitHub
-3. Select New or Updated Issue (Instant)
-4. Select your GitHub account and repo
-5. Click on Create Source
-6. Checkout the API section with SSE, you should see an url with `https://api.pipedream.com/sources/dc_foobar/sse`
+1. Make sure to have an [account on Pipedream](https://pipedream.com).
+2. Duplicate [this workflow](https://pipedream.com/@Atinux/github-issues-sse-p_NMCQbeB)
+  - Setup the Oauth with your GitHub account
+  - Select your repository
+3. Retrieve your [workflow's event stream URL](https://pipedream.com/docs/destinations/sse/#receiving-events)
 
 Fill the `ISSUES_SSE_URL` variable in the `.env` with it.
 
-https://user-images.githubusercontent.com/904724/143014568-81f605f1-f73a-454d-875e-df0386c80d71.mp4
+*Url should be similar to `http://sdk.m.pipedream.net/pipelines/[YOUR WORKFLOW ID]/sse`*
 
 ## Development
 
