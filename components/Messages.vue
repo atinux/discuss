@@ -1,15 +1,34 @@
 <script setup>
-import destr from 'destr'
 import { UseTimeAgo } from '@vueuse/components'
-const { fetch } = useGitHub()
-const { data: issues } = await useAsyncData('issues', () => fetch(`/repos/atinux/discuss/issues`))
-const timestamp = Date.now()
+const { apiUrl, headers } = useGitHub()
+const { ISSUES_SSE_URL } = useRuntimeConfig()
+const { data: issues } = await useFetch(apiUrl('/repos/atinux/discuss/issues'), {
+  headers: headers(),
+  transform: (data) => data.filter((issue) => issue.state === 'open' && !issue.pull_request && !issue.locked)
+})
 
 onMounted(() => {
-  const eventSource = new EventSource('https://sdk.m.pipedream.net/pipelines/p_yKCzjK2/sse')
-  eventSource.addEventListener('issues', (event) => {
-    const issue = destr(event.data)
-    if (issue.number && new Date(issue.created_at).getTime() > timestamp) {
+  const date = new Date()
+  const issuesSource = new EventSource(ISSUES_SSE_URL)
+
+  issuesSource.addEventListener('issues', (event) => {
+    const issue = JSON.parse(event.data)
+
+    // If issue was before hydration
+    if (new Date(issue.updated_at) < date) {
+      return
+    }
+
+    // Remove it from the list
+    if (issue.state !== 'open') {
+      issues.value = issues.value.filter((i) => i.id !== issue.id)
+      return
+    }
+    // Update it
+    const existingIssue = issues.value.find((i) => i.id === issue.id)
+    if (existingIssue) {
+      existingIssue.title = issue.title
+    } else {
       issues.value.unshift(issue)
     }
   })
