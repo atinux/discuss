@@ -4,7 +4,7 @@ export default async (req, res, next) => {
   const { code } = useQuery(req)
 
   if (!code) {
-    return next()
+    return sendRedirect(res, '/')
   }
   const response: any = await $fetch('https://github.com/login/oauth/access_token', {
     method: 'POST',
@@ -20,6 +20,6 @@ export default async (req, res, next) => {
   if (response.error) {
     return sendRedirect(res, '/')
   }
-  setCookie(res, 'github_token', response.access_token)
-  sendRedirect(res, '/')
+  setCookie(res, 'github_token', response.access_token, { path: '/', httpOnly: true })
+  return sendRedirect(res, '/')
 }

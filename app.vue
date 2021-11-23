@@ -1,12 +1,12 @@
 <script setup>
-const { GITHUB_CLIENT_ID } = useRuntimeConfig()
-const loginUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}`
+const { user } = useGitHub()
 </script>
 
 <template>
-  <div>
-    <h1>Discuss with Atinux <i class="i-carbon-chat w-4 h-4 text-black"/></h1>
-
-    <a :href="loginUrl">Login with GitHub</a>
+  <div class="container mx-auto md:mt-20 p-4 sm:p-10 md:px-20 shadow bg-light-50 flex flex-col gap-5">
+    <h1 class="text-4xl flex items-center gap-2">Discuss with Atinux <i class="inline-flex i-carbon-chat text-black"/></h1>
+    <User />
+    <NewMessage v-if="user" />
+    <Messages v-if="user" />
   </div>
 </template>

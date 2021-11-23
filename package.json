@@ -8,6 +8,10 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.0.11",
     "@unocss/nuxt": "^0.12.1",
-    "nuxt3": "latest"
+    "@vueuse/components": "^7.0.1",
+    "nuxt3": "^3.0.0-27293794.c3b72a6"
+  },
+  "dependencies": {
+    "@vueuse/core": "^7.0.1"
   }
 }
