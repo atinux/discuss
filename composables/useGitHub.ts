@@ -7,14 +7,19 @@ export const useGitHub = () => {
   if (process.server) {
     token.value = useCookie('gh_token').value
   }
-  
+
   return {
+    hasToken: computed(() => !!token.value),
     apiUrl: (path: string) => joinURL('https://api.github.com', path),
     headers: () => ({ Authorization: `token ${token.value}` }),
-    login: () => window.location.replace(`https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=public_repo`),
-    logout: () => $fetch('/api/github/logout').then(() => {
-      token.value = ''
-      window.location.reload()
-    })
+    login: () =>
+      window.location.replace(
+        `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=public_repo`
+      ),
+    logout: () =>
+      $fetch('/api/github/logout').then(() => {
+        token.value = ''
+        window.location.reload()
+      }),
   }
 }
