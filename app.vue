@@ -1,5 +1,5 @@
 <script setup>
-const login = () => githubLogin()
+const login = githubLogin
 const user = await useGithubUser()
 
 useMeta({

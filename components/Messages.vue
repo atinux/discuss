@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+import destr from 'destr'
 import { UseTimeAgo } from '@vueuse/components'
 const { ISSUES_SSE_URL } = useRuntimeConfig()
 
@@ -10,16 +11,14 @@ const { data: issues } = await useAsyncData(
 
 onMounted(() => {
   const date = new Date()
-  const eventSource = new EventSource(ISSUES_SSE_URL)
+  const { data: newIssue } = useEventSource(ISSUES_SSE_URL, ['issues'])
 
-  eventSource.addEventListener('issues', event => {
-    const issue = JSON.parse(event.data)
-
+  watch(newIssue, () => {
+    const issue = destr(newIssue.value)
     // If issue was before hydration
     if (new Date(issue.updated_at) < date) {
       return
     }
-
     // Remove it from the list
     if (issue.state !== 'open') {
       issues.value = issues.value.filter(i => i.id !== issue.id)

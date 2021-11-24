@@ -2,12 +2,12 @@ export const useGithubCookie = () => useCookie('gh_token')
 
 export const githubFetch = (url: string, fetchOptions: any = {}) => {
   return $fetch(url, {
-      baseURL: 'https://api.github.com',
-      ...fetchOptions,
-      headers: {
-        Authorization: `token ${useGithubCookie().value}`,
-        ...fetchOptions.headers
-      },
+    baseURL: 'https://api.github.com',
+    ...fetchOptions,
+    headers: {
+      Authorization: `token ${useGithubCookie().value}`,
+      ...fetchOptions.headers,
+    },
   })
 }
 
@@ -23,11 +23,13 @@ export const useGithubUser = async () => {
 export const githubLogin = () => {
   if (process.client) {
     const { GITHUB_CLIENT_ID } = useRuntimeConfig()
-    window.location.replace(`https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=public_repo`)
+    window.location.replace(
+      `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=public_repo`
+    )
   }
 }
 
 export const githubLogout = async () => {
   useGithubCookie().value = null
-  if (process.client) { window.location.reload() }
+  useState('gh_user').value = null
 }
