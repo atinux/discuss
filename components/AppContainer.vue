@@ -1,5 +1,17 @@
 <template>
   <main class="md:my-20">
+    <p class="mb-5 text-center text-sm text-gray-800">
+      <a
+        href="https://github.com/atinux/discuss"
+        class="underline hover:text-black"
+      >
+        Source code
+      </a>
+      |
+      <a href="https://atinux.com" class="underline hover:text-black">
+        Main website
+      </a>
+    </p>
     <div
       class="
         container
@@ -15,17 +27,5 @@
     >
       <slot />
     </div>
-    <p class="mt-5 text-center text-sm text-gray-800">
-      <a
-        href="https://github.com/atinux/discuss"
-        class="underline hover:text-black"
-      >
-        Source code
-      </a>
-      |
-      <a href="https://atinux.com" class="underline hover:text-black">
-        Main website
-      </a>
-    </p>
   </main>
 </template>
