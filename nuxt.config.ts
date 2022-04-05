@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
     ISSUES_SSE_URL: process.env.ISSUES_SSE_URL,
   },
-  buildModules: ['@unocss/nuxt', '@vueuse/core/nuxt'],
+  buildModules: ['@unocss/nuxt', '@vueuse/nuxt'],
   unocss: {
     preflight: true,
     icons: true,
