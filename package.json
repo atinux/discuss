@@ -7,11 +7,11 @@
     "lint": "prettier --write ."
   },
   "devDependencies": {
-    "@iconify-json/carbon": "^1.0.11",
-    "@unocss/nuxt": "^0.12.2",
-    "@vueuse/components": "^7.0.1",
-    "@vueuse/core": "^7.0.1",
+    "@iconify-json/carbon": "^1.1.3",
+    "@unocss/nuxt": "^0.30.11",
+    "@vueuse/components": "^8.2.4",
+    "@vueuse/nuxt": "^8.2.4",
     "nuxt3": "latest",
-    "prettier": "^2.4.1"
+    "prettier": "^2.6.2"
   }
 }
