@@ -33,7 +33,7 @@ Fill your `.env` with `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` variables .
 
 This add the live events when issues are created or updated.
 
-1. Make sure to have an [account on Pipedream](https://pipedream.com).
+1. Make sure to have an [account on Pipedream](https://typedream.com/?via=atinux).
 2. Duplicate [this workflow](https://pipedream.com/@Atinux/github-issues-sse-p_NMCQbeB)
   - Setup the Oauth with your GitHub account
   - Select your repository
