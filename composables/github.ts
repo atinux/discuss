@@ -6,12 +6,12 @@ export const githubFetch = (url: string, fetchOptions: any = {}) => {
     ...fetchOptions,
     headers: {
       Authorization: `token ${useGithubCookie().value}`,
-      ...fetchOptions.headers,
-    },
+      ...fetchOptions.headers
+    }
   })
 }
 
-export const useGithubUser = async () => {
+export const fetchGithubUser = async () => {
   const cookie = useGithubCookie()
   const user = useState('gh_user')
   if (cookie.value && !user.value) {
@@ -22,9 +22,10 @@ export const useGithubUser = async () => {
 
 export const githubLogin = () => {
   if (process.client) {
-    const { GITHUB_CLIENT_ID } = useRuntimeConfig()
+    const { github } = useRuntimeConfig().public
+    console.log('github', github)
     window.location.replace(
-      `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=public_repo`
+      `https://github.com/login/oauth/authorize?client_id=${github.clientId}&scope=public_repo`
     )
   }
 }

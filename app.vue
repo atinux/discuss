@@ -1,9 +1,9 @@
-<script setup>
+<script setup lang="ts">
 const login = githubLogin
-const user = await useGithubUser()
+const user = await fetchGithubUser()
 
-useMeta({
-  title: 'Discuss with Atinux',
+useSeoMeta({
+  title: 'Discuss with Atinux'
 })
 </script>
 
@@ -12,11 +12,18 @@ useMeta({
     <h1 class="text-4xl flex items-center gap-2">
       Discuss with Atinux <i class="inline-flex i-carbon-chat text-black" />
     </h1>
-    <User v-if="user" :user="user" />
-    <button v-else @click="login" class="border rounded px-2 py-1">
-      Login with GitHub
+    <AppUser
+      v-if="user"
+      :user="user"
+    />
+    <button
+      v-else
+      class="border rounded px-2 py-1 flex items-center justify-center gap-1 hover:bg-black hover:text-white"
+      @click="login"
+    >
+      <Icon name="fa-brands:github" /> Login with GitHub
     </button>
     <NewMessage v-if="user" />
-    <Messages v-if="user" />
+    <AppMessages v-if="user" />
   </AppContainer>
 </template>

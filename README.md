@@ -27,21 +27,7 @@ cp .env.example .env
 - Homepage URL: http://localhost:3000
 - Authorization callback URL: http://localhost:3000/api/github/callback
 
-Fill your `.env` with `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` variables .
-
-### Pipedream
-
-This add the live events when issues are created or updated.
-
-1. Make sure to have an [account on Pipedream](https://pipedream.com).
-2. Duplicate [this workflow](https://pipedream.com/@Atinux/github-issues-sse-p_NMCQbeB)
-  - Setup the Oauth with your GitHub account
-  - Select your repository
-3. Retrieve your [workflow's event stream URL](https://pipedream.com/docs/destinations/sse/#receiving-events)
-
-Fill the `ISSUES_SSE_URL` variable in the `.env` with it.
-
-*Url should be similar to `http://sdk.m.pipedream.net/pipelines/[YOUR WORKFLOW ID]/sse`*
+Fill your `.env` with `NUXT_PUBLIC_GITHUB_CLIENT_ID` and `NUXT_GITHUB_CLIENT_SECRET` variables .
 
 ## Development
 
