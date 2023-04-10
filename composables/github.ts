@@ -23,7 +23,6 @@ export const fetchGithubUser = async () => {
 export const githubLogin = () => {
   if (process.client) {
     const { github } = useRuntimeConfig().public
-    console.log('github', github)
     window.location.replace(
       `https://github.com/login/oauth/authorize?client_id=${github.clientId}&scope=public_repo`
     )
